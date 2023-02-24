@@ -1,0 +1,101 @@
+﻿@model web.Models.OrderDetails
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="span12">
+
+        <div class="well well-small">
+
+
+
+            <table class="table table-bordered table-condensed">
+                <thead>
+                    <tr>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Siparis ID</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Siparis Numarası</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sipariş Tarihi</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Toplam Tutar ($)</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Şipariş Durumu</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"></font>Adres</font></th>
+                    </tr>
+                </thead>
+
+                <tr>
+                    <td>@Model.OrderId </td>
+                    <td>@Model.OrderNumber</td>
+                    <td>@Model.OrderDate</td>
+                    <td>@Model.Total</td>
+                    <td>
+                        @if (Model.OrderState == web.Entitys.OrderState.Bekleniyor)
+                        {
+                            <a class="btn btn-primary" >Sipariş Bekleniyor..</a>
+                        }
+
+                        else if (Model.OrderState == web.Entitys.OrderState.Paketlendi)
+                        {
+                            <a class="btn btn-success" >Sipariş Paketlendi..</a>
+                        }
+                        else if (Model.OrderState == web.Entitys.OrderState.Kargolandı)
+                        {
+                            <a class="btn btn-info" >Sipariş Kargolandı..</a>
+                        }
+                        else if (Model.OrderState == web.Entitys.OrderState.Tamamlandı)
+                        {
+                            <a class="btn btn-primary">Sipariş Kargolandı..</a>
+                        }
+
+
+                    </td>
+                    <td>
+                        @Model.Adres <br />
+                        @Model.Sehir <br />
+                        @Model.Semt <br />
+                        @Model.Mahalle <br />
+                        @Model.PostaKodu <br />
+
+                    </td>
+
+                </tr>
+
+            </table>
+
+            <br>
+
+            <table class="table table-bordered table-condensed">
+                <thead>
+
+                    <tr>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ürün Resim</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sipariş Adı</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ürün Tutar ($)</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ürün Miktar </font></font></th>
+                      
+                    </tr>
+                </thead>
+              
+              @foreach (var item in Model.OrderLines)
+              {
+
+         
+            <tr>
+                <td><img src="~/Content/image/@item.Image" height="75" width="75" /></td>
+                <td>@item.ProductName</td>
+                <td>@item.Price</td>
+                <td>@item.Quantity</td>
+            
+                <td><a href="/Home/ProductDetails/ @item.ProductId" class="btn btn-primary" target="_blank">SiparişDetay </a></td>
+            </tr>
+              }
+                
+            </table>
+
+
+
+
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,19 @@
+﻿@using web.Entitys
+@model IEnumerable<Product>
+
+@foreach (var item in Model)
+{
+<ul class="nav nav-list promowrapper">
+    <li>
+        <div class="thumbnail">
+          
+            <img src="/Content/image/@item.İmage" alt="önyükleme e-ticaret şablonları">
+            <div class="caption">
+                <h4><a class="defaultBtn" href="/Home/ProductDetails/@item.Id">Görüntüle</a> <span class="pull-right"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.Price ($) </font></font></span></h4>
+            </div>
+        </div>
+    </li>
+
+</ul>
+}
+

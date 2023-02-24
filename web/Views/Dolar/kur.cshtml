@@ -1,0 +1,45 @@
+﻿@using web.Entitys
+@model IEnumerable<DovızKur>
+
+@foreach (var item in Model)
+{
+
+    if (item.Sembol == "XGLD" || item.Sembol== "USDTRY" || item.Sembol== "EURTRY")
+    {
+        <div class="span3" style="background-color:black;padding:10px;">
+            <div class="col-lg-2">
+                <div class="currency-card currency-card--big we waves-effect waves-classic waves-button" data-code="EUR" data-type="big" data-marketid="0" time="17:08:16">
+                    <div class="currency-card__head">
+
+                        <span class="text">@item.Tanim : </span>
+                    </div>
+                    <div class="currency-card__content">
+                        <div class="value primary">
+                            <span class="badget" title="Alış Fiyatı" aria-label="Alış Fiyatı">Aliş : </span>
+                            <span style="color:green">@item.Alis</span>
+                        </div>
+                        <div class="value">
+                            <span class="badget" title="Satış Fiyatı" aria-label="Satış Fiyatı">Satış : </span>
+                            <span class="value currency-value canli-down" style="color:red">@item.Satis</span>
+                        </div>
+                    </div>
+                    <div class="currency-card__bottom">
+                        <div class="other">
+                            Düksek :
+                            <span style="color:green">@item.Yusek</span>
+                        </div>
+                        <div class="other">
+                            Düşük :
+                            <span style="color:red">@item.Dusuk</span>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            </div>
+            }
+
+
+
+
+            }

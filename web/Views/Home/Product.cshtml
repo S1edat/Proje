@@ -1,0 +1,75 @@
+﻿@using web.Entitys
+@model IEnumerable<Product>
+
+
+<div class="row">
+    <div id="sidebar" class="span3">
+        <div class="well well-small">
+            <ul class="nav nav-list">
+                @Html.Action("_CategoryList", "Categoryy")
+                <li style="border:0"> &nbsp;</li>
+                @Html.Action("Summary", "Cart")
+            </ul>
+        </div>
+
+        <div class="well well-small alert alert-warning cntr">
+            <h2><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">50 indirim</font></font></h2>
+            <p>
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">
+                        sadece online sipariş için geçerlidir.
+                    </font>
+                </font><br><br><a class="defaultBtn" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Buraya Tıkla</font></font></a>
+            </p>
+        </div>
+        <div class="well well-small"><a href="#"><img src="/webb/shop-cart/assets/img/paypal.jpg" alt="ödeme yöntemi paypal"></a></div>
+
+        <a class="shopBtn btn-block" href="#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Yaklaşan ürünler </font></font><br><small><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Görüntülemek için tıklayın</font></font></small></a>
+        <br>
+        <br>
+
+        @Html.Action("_FeaturedProductList", "Home")
+
+    </div>
+	<div class="span9">
+<!--
+New Products
+-->
+	<div class="well well-small">
+	<h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Bizim ürünlerimiz</font></font></h3>
+		
+
+
+
+		<div class="row-fluid">
+            <ul class="thumbnails">
+
+
+				@*//yönlendirmeye bakkk.....*@
+                @foreach (var item in Model)
+                {
+                    <li class="span4">
+                        <div class="thumbnail">
+                            <a href="/Home/ProductDetails.cshtml/@item.Id" class="overlay"></a>
+                            @*<a class="zoomTool" href="~/Views/Home/ProductDetails.cshtml/@item.Id" title="Sepete ekle" style="display: none;"><span class="icon-search"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">HIZLI GÖRÜNÜM</font></font></a>*@
+                            <a href="product_details.html"><img src="~/Content/image/@item.İmage" style="max-width:207px; max-height:206px; min-height:206px;" alt=""></a>
+                            <div class="caption cntr">
+                                <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.Name</font></font></p>
+                                <p><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.Price ₺</font></font></strong></p>
+                                <h4><a class="shopBtn" href="/Home/ProductDetails/@item.Id" title="Sepete ekle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Görüntüle</font></font></a></h4>
+
+                                <br class="clr">
+                            </div>
+                        </div>
+                    </li>
+
+                }
+
+
+            </ul>
+		</div>
+	
+	
+	</div>
+	</div>
+	</div>

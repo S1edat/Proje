@@ -1,0 +1,12 @@
+﻿@using web.Models
+@model IEnumerable<CategoryModel>
+@*listeleme olacağı için ---IEnumerable---- kullandık....*@
+
+<li><a href="/Home/Product"><span class="icon-chevron-right"></span>Tüm Ürünler</a></li>
+
+@foreach (var item in Model)
+{
+    <li><a href="/Home/ProductList/@item.Id"><span class="icon-chevron-right"></span>@item.Name [@item.Count]</a></li>
+}
+
+

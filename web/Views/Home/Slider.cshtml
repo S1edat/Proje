@@ -1,0 +1,30 @@
+﻿
+@using web.Entitys
+@model IEnumerable<Product>
+
+<div id="myCarousel" class="carousel slide homCar">
+    <div class="carousel-inner">
+        
+        <div class="item active">
+            <img style="width: 100%; max-width: 698px;max-height: 327px;min-height:327px;min-width:698px;" src="~/Content/image/1.jpg" alt="önyükleme e-ticaret şablonları">
+            <div class="carousel-caption">
+                
+            </div>
+        </div>
+
+        @foreach (var item in Model)
+        {
+    <div class="item">
+        <a href="/Home/ProductDetails/@item.Id"> <img style="width:100%; max-width:698px; max-height:327px;min-width:698px;min-height:327px;" src="~/Content/image/@item.İmage" alt="Slider ürünleri"></a>
+        <div class="carousel-caption">
+            <h4><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.Name</font></font></h4>
+            <p><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@item.Price (₺)</font></font></span></p>
+        </div>
+    </div>
+        }
+        
+    </div>
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">‹</font></font></a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">›</font></font></a>
+</div>
+

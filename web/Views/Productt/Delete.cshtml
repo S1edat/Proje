@@ -1,0 +1,104 @@
+﻿@model web.Entitys.Product
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content">
+
+    <h3>Ürünü Silmek İstediğinize Emin misiniz ? </h3>
+    <div>
+
+        <hr />
+        <dl class="dl-horizontal">
+
+
+            <dt>
+                Ürün Adı
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                Ürün Açıklama
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                Ürün Resim
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.İmage)
+                <img src="~/Content/image/@Model.İmage" width="50" height="40" />
+            </dd>
+
+            <dt>
+                Ürün Fiyat
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Price)
+            </dd>
+
+            <dt>
+                Ürün Stok
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Stock)
+            </dd>
+
+            <dt>
+                Slider
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Slider)
+            </dd>
+
+            <dt>
+                AnaSayfa
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.İsHome)
+            </dd>
+
+            <dt>
+                Öne Çıkanlar
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.İsFeatured)
+            </dd>
+
+            <dt>
+                Onaylar
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.İsAproved)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            
+                <div class="form-actions no-color">
+                    <input type="submit" value="Sil" class="btn btn-primary" /> |
+                    @Html.ActionLink("Ürün Listesi ", "Index", null, new { @class = "btn btn-warning" })
+                </div>
+       
+        }
+    </div>
+</section>

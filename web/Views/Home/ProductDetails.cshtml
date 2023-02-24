@@ -1,0 +1,72 @@
+﻿@using web.Entitys
+@model  Product 
+
+@*// liste oldugu zaman ıenumermble kullan düz olduğu zaman tekil sınıfı yaz*@
+
+<div class="row">
+    <div id="sidebar" class="span3">
+        <div class="well well-small">
+            <ul class="nav nav-list">
+                @Html.Action("_CategoryList", "Categoryy")
+                <li style="border:0"> &nbsp;</li>
+                @Html.Action("Summary", "Cart")
+            </ul>
+        </div>
+        <br>
+        @Html.Action("_FeaturedProductList", "Home")
+
+    </div>
+    <div class="span9">
+        <ul class="breadcrumb">
+            <li ><a href="/Home/Index"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ana Sayfa </font></font></a> <span class="divider"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/</font></font></span></li>
+            <li><a href="~/Home/Product"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ürünler </font></font></a> <span class="divider"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">/</font></font></span></li>
+            <li class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ürün Detay</font></font></li>
+        </ul>
+        <div class="well well-small">
+            <div class="row-fluid">
+                <div class="span5">
+                    <div id="myCarousel" class="carousel slide cntr">
+                       
+                            <div class="item active">
+                                <a href="#"> <img src="~/Content/image/@Model.İmage" style="max-width:207px; max-height:206px; min-height:206px;" alt=""></a>
+                            </div>
+                            
+                      
+                            
+                    </div>
+                </div>
+                <div class="span7">
+                    <h3><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@Model.Name [@Model.Price ₺]</font></font></h3>
+                    <hr class="soft">
+                    @using(Html.BeginForm("AddToCart","Cart",new { @class= "form-horizontal qtyFrm" }))
+            {
+                @Html.HiddenFor(i=>i.Id)
+                    <div class="control-group">
+                        <label class="control-label"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> Ürün Miktarı : @Model.Stock</font></font></span></label>
+
+                    </div>
+
+
+                    <p>
+                        <font style="vertical-align: inherit;">
+                            <font style="vertical-align: inherit;">@Model.Stock</font><font style="vertical-align: inherit;">
+                                @Model.Description
+                            </font>
+                        </font>
+                    </p><p>
+                        <button type="submit" class="shopBtn"><span class=" icon-shopping-cart"></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sepete ekle</font></font></button>
+                    </p>
+            
+            }
+                    
+                </div>
+            </div>
+            <hr class="softn clr">
+
+
+            
+            
+
+        </div>
+    </div>
+</div>

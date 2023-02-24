@@ -1,0 +1,60 @@
+﻿@using web.Entitys     
+@model IEnumerable<Product>
+<div class="row">
+    <div id="sidebar" class="span3">
+        <div class="well well-small">
+            <ul class="nav nav-list">
+
+                @*partial wiew kullanılırken ilk önce partial wiew kullanılır daha sonrasında controller kullanılır..*@
+                @Html.Action("_CategoryList", "Categoryy")
+                <li style="border:0"> &nbsp;</li>
+                @Html.Action("Summary", "Cart")
+            </ul>
+        </div>
+        <br>
+
+        @Html.Action("_FeaturedProductList", "Home")
+      
+
+    </div>
+    <div class="span9">
+        <div class="well np">
+           @Html.Action("Slider","Home")
+        </div>
+        <!--
+        New Products
+        -->
+       
+            <h3>New Products </h3>
+            <hr class="soften" />
+            
+         
+                <ul class="thumbnails">
+                    @foreach (var item in Model)
+                    {
+                    <li class="span3">
+                        <div class="thumbnail">
+
+                            
+                            <a href="/Home/ProductDetails/@item.Id"><img src="~/Content/image/@item.İmage" style="max-width:207px; max-height:206px; min-height:206px;" alt=""></a>
+                            <div class="caption cntr">
+                                <p>@item.Name </p>
+                                <p><strong> @item.Price ₺ </strong></p>
+                                <h4><a class="shopBtn" href="/Home/ProductDetails/@item.Id" title="add to cart"> GÖRÜNTÜLE </a></h4>
+                             
+                                <br class="clr">
+                            </div>
+                        </div>
+                    </li>
+                    }
+                    
+                    
+                </ul>
+            </div>
+        </div>
+        <!--
+        Featured Products
+        -->
+        
+
+  
